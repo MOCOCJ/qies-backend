@@ -4,4 +4,4 @@
 BackEnd  
 Parser  
 CreateValidServicesFile  
-BackOfficeManager
+BackEndManager
