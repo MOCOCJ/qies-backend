@@ -11,6 +11,12 @@ public class BackEnd {
             System.exit(exitCode);
         }
 
+        // inputs are
+        // the file name of the Merged Transaction Summary File,
+        // the file name of the old Central Services File,
+        // the file name of the new Central Services File, and
+        // the file name of the new Valid Services File.
+
         // Do parsing and file stuff here
 
         System.exit(exitCode);
