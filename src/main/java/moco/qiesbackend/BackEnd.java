@@ -17,7 +17,7 @@ public class BackEnd {
         // the file name of the new Central Services File, and
         // the file name of the new Valid Services File.
 
-        // Do parsing and file stuff here
+        BackEndManager manager = new BackEndManager(args[0], args[1], args[2], args[3]);
 
         System.exit(exitCode);
     }
