@@ -1,5 +1,10 @@
 package moco.qiesbackend;
 
+import java.util.logging.Level;
+
+import lombok.extern.java.Log;
+
+@Log
 public class BackEnd {
 
     public static void main(String[] args) {
