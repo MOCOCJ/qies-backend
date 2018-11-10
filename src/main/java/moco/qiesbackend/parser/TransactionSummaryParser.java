@@ -17,12 +17,24 @@ import moco.qiesbackend.record.TransactionRecord;
 /**
  * TransactionSummaryParser
  */
+@Log
 public class TransactionSummaryParser {
 
-    private TransactionQueue transactionQueue;
+    public static TransactionQueue parseFile(Path transactionSummaryPath) {
+        TransactionQueue transactionQueue = new TransactionQueue();
+        List<String> transactionFileLines = null;
+        try {
+            transactionFileLines = Files.readAllLines(transactionSummaryPath);
+        } catch (IOException e) {
+            log.log(Level.SEVERE, "Unable to read merged transaction summary file");
+            e.printStackTrace();
+        }
 
-    public TransactionSummaryParser() {
-        
+        for (String line : transactionFileLines) {
+            transactionQueue.push(parseLine(line));
+        }
+
+        return transactionQueue;
     }
 
     public static TransactionRecord parseLine(String transactionString) {
