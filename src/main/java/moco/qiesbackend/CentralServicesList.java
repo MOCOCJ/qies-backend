@@ -1,5 +1,11 @@
 package moco.qiesbackend;
 
+import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.WRITE;
+
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +37,7 @@ public class CentralServicesList {
     private ArrayList<String> centralServicesFileContents() {
         ArrayList<String> lines = new ArrayList<>();
 
+        
 
         return lines;
     }
@@ -49,13 +56,8 @@ public class CentralServicesList {
     }
 
     public void writeValidServicesFile(Path validServicesOutputPath) {
-        byte[] recordBytes;
         try {
-            for (int i = 0; i < validServices.size(); i++) {
-                recordBytes = validServices.get(i).getBytes();
-
-                Files.write(validServicePath, recordBytes, CREATE, WRITE, APPEND);
-            }
+            Files.write(validServicesOutputPath, validServicesFileContents(), CREATE, WRITE, APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
