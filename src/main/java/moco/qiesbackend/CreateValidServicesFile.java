@@ -1,5 +1,15 @@
 package moco.qiesbackend;
 
+import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.WRITE;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +18,8 @@ public class CreateValidServicesFile {
     List<String> validServices = new ArrayList<String>();
 
     public CreateValidServicesFile(String centralServicesFile, String newValidServicesFile) {
-        readServices(centralServicesFile);
-        writeNewValidServicesFile(newValidServicesFile);
+        readServices(new File(centralServicesFile));
+        writeNewValidServicesFile(new File(newValidServicesFile));
     }
 
     public void readServices(File centralServicesFile) {
@@ -25,11 +35,11 @@ public class CreateValidServicesFile {
         }
     }
 
-    public void writeNewValidServicesFile(String newValidServicesFile) {
+    public void writeNewValidServicesFile(File newValidServicesFile) {
         Path validServicePath = newValidServicesFile.toPath();
         byte[] recordBytes;
         try {
-            for (int i = 0; i < validServices.length; i++) {
+            for (int i = 0; i < validServices.size(); i++) {
                 recordBytes = validServices.get(i).getBytes();
 
                 Files.write(newValidServicesFile, recordBytes, CREATE, WRITE, APPEND);
