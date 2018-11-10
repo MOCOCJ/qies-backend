@@ -27,7 +27,7 @@
     </dependencies>
 
     <build>
-        <finalName>frontend</finalName>
+        <finalName>backoffice</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
