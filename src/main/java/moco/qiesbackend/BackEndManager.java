@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import moco.qiesbackend.parser.CentralServicesParser;
 import moco.qiesbackend.parser.TransactionQueue;
 import moco.qiesbackend.parser.TransactionSummaryParser;
+import moco.qiesbackend.record.TransactionRecord;
 
 public class BackEndManager {
     TransactionQueue transactionSummary;
@@ -27,6 +28,7 @@ public class BackEndManager {
     }
 
     public void operate() {
-
+        TransactionRecord element = transactionSummary.pop();
+        //do the magic
     }
 }
