@@ -11,6 +11,7 @@ import moco.qiesbackend.record.ServiceNumber;
 /**
  * CentralServicesList
  */
+@Getter
 public class CentralServicesList {
 
     Map<ServiceNumber, Service> services;
@@ -41,7 +42,8 @@ public class CentralServicesList {
     private ArrayList<String> validServicesFileContents() {
         ArrayList<String> lines = new ArrayList<>();
 
-        
+        services.forEach((serviceNumber, service) -> lines.add(serviceNumber.toString()));
+        lines.add("00000");
 
         return lines;
     }
