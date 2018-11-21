@@ -28,7 +28,8 @@ public class BackEndManager {
     }
 
     public void operate() {
-        TransactionRecord element = transactionSummary.pop();
-        //do the magic
+        while(!transactionSummary.isEmpty()) {
+            TransactionRecord element = transactionSummary.pop();
+        }
     }
 }
