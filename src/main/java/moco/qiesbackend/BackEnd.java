@@ -18,9 +18,9 @@ public class BackEnd {
 
         // inputs are
         // the file name of the Merged Transaction Summary File,
-        // the file name of the old Central Services File,
-        // the file name of the new Central Services File, and
-        // the file name of the new Valid Services File.
+        // the file name of the Old Central Services File,
+        // the file name of the New Central Services File, and
+        // the file name of the New Valid Services File.
 
         BackEndManager manager = new BackEndManager(args[0], args[1], args[2], args[3]);
         manager.operate();
