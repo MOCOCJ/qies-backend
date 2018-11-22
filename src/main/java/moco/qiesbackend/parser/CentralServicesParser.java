@@ -41,9 +41,9 @@ public class CentralServicesParser {
         Service service = new Service();
         String serviceTokens[] = serviceString.split(" ", 4);
 
-        service.setServiceNumber(new ServiceNumber(serviceTokens[0]));
+        service.setServiceNumber(new ServiceNumber(serviceTokens[0], true));
         service.setServiceCapacity(Integer.parseInt(serviceTokens[1]));
-        service.setTicketsSold(new NumberTickets(serviceTokens[2]));
+        service.setTicketsSold(new NumberTickets(serviceTokens[2], false));
         service.setServiceName(new ServiceName(serviceTokens[3]));
 
         return service;

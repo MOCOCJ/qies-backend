@@ -32,6 +32,7 @@ public class BackEndManager {
         //     TransactionRecord element = transactionSummary.pop();
         centralServicesList.writeValidServicesFile(validServicesOutputPath);
         centralServicesList.writeCentralServicesFile(centralServicesOutputPath);
+        // System.out.println("Operate Complete");
         // }
     }
 }
