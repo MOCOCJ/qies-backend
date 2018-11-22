@@ -1,6 +1,6 @@
 package moco.qiesbackend;
 
-import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.WRITE;
 
@@ -46,7 +46,7 @@ public class CentralServicesList {
 
     public void writeCentralServicesFile(Path centralServicesOutputPath) {
         try {
-            Files.write(centralServicesOutputPath, centralServicesFileContents(), CREATE, WRITE, APPEND);
+            Files.write(centralServicesOutputPath, centralServicesFileContents(), CREATE, WRITE, TRUNCATE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class CentralServicesList {
 
     public void writeValidServicesFile(Path validServicesOutputPath) {
         try {
-            Files.write(validServicesOutputPath, validServicesFileContents(), CREATE, WRITE, APPEND);
+            Files.write(validServicesOutputPath, validServicesFileContents(), CREATE, WRITE, TRUNCATE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
