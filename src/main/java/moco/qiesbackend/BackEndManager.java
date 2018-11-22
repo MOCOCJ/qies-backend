@@ -28,11 +28,56 @@ public class BackEndManager {
     }
 
     public void operate() {
-        // while(!transactionSummary.isEmpty()) {
-        //     TransactionRecord element = transactionSummary.pop();
+        TransactionRecord record;
+        while(!transactionSummary.isEmpty()) {
+            record = transactionSummary.pop();
+
+            switch (record.getCode()) {
+                case CRE:
+                    processCRE(record);
+                    break;
+                case DEL:
+                    processDEL(record);
+                    break;
+                case SEL:
+                    processSEL(record);
+                    break;
+                case CAN:
+                    processCAN(record);
+                    break;
+                case CHG:
+                    processCHG(record);
+                    break;
+                case EOS:
+                    break;
+            }
+        }
         centralServicesList.writeValidServicesFile(validServicesOutputPath);
         centralServicesList.writeCentralServicesFile(centralServicesOutputPath);
-        // System.out.println("Operate Complete");
-        // }
+    }
+
+    // Create service
+    private void processCRE(TransactionRecord record) {
+        
+    }
+
+    // Delete service
+    private void processDEL(TransactionRecord record) {
+
+    }
+
+    // Sell tickets
+    private void processSEL(TransactionRecord record) {
+
+    }
+
+    // Cancel tickets
+    private void processCAN(TransactionRecord record) {
+
+    }
+
+    // Change tickets
+    private void processCHG(TransactionRecord record) {
+
     }
 }
