@@ -28,8 +28,10 @@ public class BackEndManager {
     }
 
     public void operate() {
-        while(!transactionSummary.isEmpty()) {
-            TransactionRecord element = transactionSummary.pop();
-        }
+        // while(!transactionSummary.isEmpty()) {
+        //     TransactionRecord element = transactionSummary.pop();
+        centralServicesList.writeValidServicesFile(validServicesOutputPath);
+        centralServicesList.writeCentralServicesFile(centralServicesOutputPath);
+        // }
     }
 }
