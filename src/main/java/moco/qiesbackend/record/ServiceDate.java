@@ -18,15 +18,16 @@ public class ServiceDate extends RecordElement {
     private final static String DEFAULT = "0";
     private final static String NUMBERS = "0123456789";
 
-
-    public ServiceDate(String date) {
-        if (isValid(date)) {
-            year = date.substring(0, 4);
-            month = date.substring(4, 6);
-            day = date.substring(6);
-            isSet = true;
-        } else {
-            throw new IllegalArgumentException();
+    public ServiceDate(String date, boolean defaultStr) {
+        if (!defaultStr) {
+            if (isValid(date)) {
+                year = date.substring(0, 4);
+                month = date.substring(4, 6);
+                day = date.substring(6);
+                isSet = true;
+            } else {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -37,7 +38,7 @@ public class ServiceDate extends RecordElement {
                     return false;
                 }
             }
-            
+
             int y = Integer.parseInt(value.substring(0, 4));
             int m = Integer.parseInt(value.substring(4, 6));
             int d = Integer.parseInt(value.substring(6));
