@@ -46,7 +46,6 @@ public class CentralServicesParser {
         service.setTicketsSold(new NumberTickets(serviceTokens[2], false));
         service.setServiceName(new ServiceName(serviceTokens[3]));
 
-        System.out.println(service.toString());
         return service;
     }
 }
