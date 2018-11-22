@@ -43,7 +43,7 @@ public class CentralServicesParser {
 
         service.setServiceNumber(new ServiceNumber(serviceTokens[0], true));
         service.setServiceCapacity(Integer.parseInt(serviceTokens[1]));
-        service.setTicketsSold(new NumberTickets(serviceTokens[2], false));
+        service.setTicketsSold(new NumberTickets(serviceTokens[2], true));
         service.setServiceName(new ServiceName(serviceTokens[3]));
 
         return service;
