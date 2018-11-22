@@ -22,5 +22,18 @@ public class Service {
         serviceCapacity = 30;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
 
+        sb.append(serviceNumber);
+        sb.append(" ");
+        sb.append(serviceCapacity);
+        sb.append(" ");
+        sb.append(ticketsSold);
+        sb.append(" ");
+        sb.append(serviceName);
+
+        return sb.toString();
+    }
 }

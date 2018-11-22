@@ -43,9 +43,10 @@ public class CentralServicesParser {
 
         service.setServiceNumber(new ServiceNumber(serviceTokens[0], true));
         service.setServiceCapacity(Integer.parseInt(serviceTokens[1]));
-        service.setTicketsSold(new NumberTickets(serviceTokens[2], true));
+        service.setTicketsSold(new NumberTickets(serviceTokens[2], false));
         service.setServiceName(new ServiceName(serviceTokens[3]));
 
+        System.out.println(service.toString());
         return service;
     }
 }
