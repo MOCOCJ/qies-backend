@@ -26,7 +26,7 @@ public class CentralServicesParser {
         try {
             servicesFileLines = Files.readAllLines(centralServicesPath);
         } catch (IOException e) {
-            log.log(Level.SEVERE, "Unable to read merged transaction summary file");
+            log.log(Level.SEVERE, "Unable to read old central services file");
             e.printStackTrace();
         }
 
