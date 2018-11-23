@@ -97,11 +97,12 @@ public class BackEndManager {
         Level logLevel = Level.WARNING;
         if (centralServicesList.contains(record.getSourceNumber())) {
             Service service = centralServicesList.get(record.getSourceNumber());
-            logMessage = "Failed to cancel tickets. Number to cancel exceeds number of tickets sold.";
-            if (record.getNumberTickets().getNumber() <= service.getTicketsSold().getNumber()) {
+            try {
                 service.removeTickets(record.getNumberTickets().getNumber());
                 logMessage = "Successfully cancelled tickets.";
                 logLevel = Level.INFO;
+            } catch (IllegalArgumentException e) {
+                logMessage = "Failed to cancel tickets. Number to cancel exceeds number of tickets sold.";
             }
         }
         log.log(logLevel, logMessage);

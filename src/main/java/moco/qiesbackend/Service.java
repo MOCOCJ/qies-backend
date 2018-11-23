@@ -27,8 +27,13 @@ public class Service {
 
     public void addTickets(int toAdd) {
         int oldNum = ticketsSold.getNumber();
-        String newNum = (oldNum + toAdd) + "";
-        ticketsSold = new TicketsSold(newNum);
+        int newNum = oldNum + toAdd;
+        if (newNum > serviceCapacity) {
+            throw new IllegalArgumentException();
+        } else {
+            String str = newNum + "";
+            ticketsSold = new TicketsSold(str);
+        }
     }
 
     public void removeTickets(int toRemove) {

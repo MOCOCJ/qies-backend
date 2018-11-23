@@ -31,6 +31,9 @@ public class ServiceName extends RecordElement {
             if (value.charAt(0) != ' ' && value.charAt(value.length() - 1) != ' ') {
                 for (int i = 0; i < value.length(); i++) {
                     if (!ALPHA.contains("" + value.charAt(i))) {
+                        if (DEFAULT.equals(value)) {
+                            return true;
+                        }
                         return false;
                     }
                 }
