@@ -20,6 +20,9 @@ public class Service {
 
     public Service() {
         serviceCapacity = 30;
+        serviceNumber = new ServiceNumber();
+        serviceName = new ServiceName();
+        ticketsSold = new NumberTickets();
     }
 
     @Override
