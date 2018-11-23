@@ -2,7 +2,6 @@ package moco.qiesbackend;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 import moco.qiesbackend.parser.CentralServicesParser;
 import moco.qiesbackend.parser.TransactionQueue;
@@ -20,8 +19,6 @@ public class BackEndManager {
         Path centralServicesPath = Paths.get(oldCentralFile);
         centralServicesOutputPath = Paths.get(newCentralFile);
         validServicesOutputPath = Paths.get(newValidFile);
-
-        // TODO: Do some checks here to ensure that the files exist and can be read from
 
         transactionSummary = TransactionSummaryParser.parseFile(transactionSummaryPath);
         centralServicesList = CentralServicesParser.parseFile(centralServicesPath);
