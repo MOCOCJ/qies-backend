@@ -18,7 +18,7 @@ public class ServiceNumber extends RecordElement {
     private final static String NUMBERS = "0123456789";
 
     /*
-     * // This constructor is for the Agent/Planner to validate the String with the
+     * This constructor is for the Agent/Planner to validate the String with the
      * valid-service-list.txt public ServiceNumber(String number, SessionManager
      * manager) { if (isContained(number, manager)) { this.number = number;
      * this.isSet = true; } else { throw new IllegalArgumentException(); } }
@@ -41,7 +41,7 @@ public class ServiceNumber extends RecordElement {
     }
 
     /*
-     * // Checks is the ServiceName is contained in the valid_services_list.txt
+     * Checks is the ServiceName is contained in the valid_services_list.txt
      * public static boolean isContained(String value, SessionManager manager) { if
      * (isValid(value)) { if (manager.getServicesList().isInList(value)) { return
      * true; } } return false; }
