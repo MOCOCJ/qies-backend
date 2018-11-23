@@ -55,7 +55,12 @@ public class BackEndManager {
 
     // Create service
     private void processCRE(TransactionRecord record) {
-        
+        if (!centralServicesList.contains(record.getSourceNumber())) {
+            Service newService = new Service();
+            newService.setServiceNumber(record.getSourceNumber());
+            newService.setServiceName(record.getServiceName());
+            centralServicesList.add(newService);
+        }
     }
 
     // Delete service

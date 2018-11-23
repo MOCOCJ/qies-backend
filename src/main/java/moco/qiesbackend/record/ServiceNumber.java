@@ -69,4 +69,12 @@ public class ServiceNumber extends RecordElement {
         }
         return DEFAULT;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof ServiceNumber) {
+            return this.number.equals(((ServiceNumber)o).getNumber());
+        }
+        return false;
+    }
 }
