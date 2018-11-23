@@ -76,7 +76,13 @@ public class BackEndManager {
         String logMessage = "Failed to delete service. Service does not exist.";
         Level logLevel = Level.WARNING;
         if (centralServicesList.contains(record.getSourceNumber())) {
-
+            Service toDelete = centralServicesList.get(record.getSourceNumber());
+            logMessage = "Failed to delete service. Service still has sold tickets.";
+            if (toDelete.getTicketsSold().getNumber() == 0) {
+                centralServicesList.delete(toDelete.getServiceNumber());
+                logMessage = "Service deleted";
+                logLevel = Level.INFO;
+            }
         }
         log.log(logLevel, logMessage);
     }
