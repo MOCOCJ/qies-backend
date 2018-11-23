@@ -15,26 +15,26 @@ public class Service {
 
     private ServiceNumber serviceNumber;
     private ServiceName serviceName;
-    private NumberTickets ticketsSold;
+    private TicketsSold ticketsSold;
     private int serviceCapacity; // TODO: wrap into its own type later
 
     public Service() {
         serviceCapacity = 30;
         serviceNumber = new ServiceNumber();
         serviceName = new ServiceName();
-        ticketsSold = new NumberTickets();
+        ticketsSold = new TicketsSold();
     }
 
     public void addTickets(int toAdd) {
         int oldNum = ticketsSold.getNumber();
         String newNum = (oldNum + toAdd) + "";
-        ticketsSold = new NumberTickets(newNum, false);
+        ticketsSold = new TicketsSold(newNum);
     }
 
     public void removeTickets(int toRemove) {
         int oldNum = ticketsSold.getNumber();
         String newNum = (oldNum - toRemove) + "";
-        ticketsSold = new NumberTickets(newNum, false);
+        ticketsSold = new TicketsSold(newNum);
     }
 
     @Override
