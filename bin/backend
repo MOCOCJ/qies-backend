@@ -1,5 +1,5 @@
 #!/bin/bash
-executable="./target/backend.jar"
+executable="./target/backoffice.jar"
 
 if [ ! -f "$executable" ]
 then
