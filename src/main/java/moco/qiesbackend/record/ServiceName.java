@@ -22,7 +22,7 @@ public class ServiceName extends RecordElement {
             this.name = name;
             isSet = true;
         } else {
-            // Throw exception
+            throw new IllegalArgumentException();
         }
     }
 

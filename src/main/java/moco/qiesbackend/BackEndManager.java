@@ -43,7 +43,7 @@ public class BackEndManager {
                     processSEL(record);
                     break;
                 case CAN:
-                    processCAN(record);
+                    processCAN(record); // Block testing start
                     break;
                 case CHG:
                     processCHG(record);
