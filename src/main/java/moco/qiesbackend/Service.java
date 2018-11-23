@@ -38,8 +38,13 @@ public class Service {
 
     public void removeTickets(int toRemove) {
         int oldNum = ticketsSold.getNumber();
-        String newNum = (oldNum - toRemove) + "";
-        ticketsSold = new TicketsSold(newNum);
+        int newNum = oldNum - toRemove;
+        if (newNum < 0) {
+            throw new IllegalArgumentException();
+        } else {
+            String str = newNum + "";
+            ticketsSold = new TicketsSold(str);
+        }
     }
 
     @Override
