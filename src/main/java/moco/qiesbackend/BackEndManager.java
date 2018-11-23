@@ -83,7 +83,18 @@ public class BackEndManager {
 
     // Cancel tickets
     private void processCAN(TransactionRecord record) {
-
+        String logMessage = "Failed to cancel tickets. The service does not exist.";
+        Level logLevel = Level.WARNING;
+        if (centralServicesList.contains(record.getSourceNumber())) {
+            Service service = centralServicesList.get(record.getSourceNumber());
+            logMessage = "Failed to cancel tickets. Number to cancel exceeds number of tickets sold.";
+            if (record.getNumberTickets().getNumber() <= service.getTicketsSold().getNumber()) {
+                service.removeTickets(record.getNumberTickets().getNumber());
+                logMessage = "Successfully cancelled tickets.";
+                logLevel = Level.INFO;
+            }
+        }
+        log.log(logLevel, logMessage);
     }
 
     // Change tickets

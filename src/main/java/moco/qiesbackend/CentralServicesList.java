@@ -34,6 +34,10 @@ public class CentralServicesList {
         services.remove(number);
     }
 
+    public Service get(ServiceNumber number) {
+        return services.get(number);
+    }
+
     public boolean contains(ServiceNumber number) {
         return services.keySet().contains(number);
     }

@@ -25,6 +25,18 @@ public class Service {
         ticketsSold = new NumberTickets();
     }
 
+    public void addTickets(int toAdd) {
+        int oldNum = ticketsSold.getNumber();
+        String newNum = (oldNum + toAdd) + "";
+        ticketsSold = new NumberTickets(newNum, false);
+    }
+
+    public void removeTickets(int toRemove) {
+        int oldNum = ticketsSold.getNumber();
+        String newNum = (oldNum - toRemove) + "";
+        ticketsSold = new NumberTickets(newNum, false);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
