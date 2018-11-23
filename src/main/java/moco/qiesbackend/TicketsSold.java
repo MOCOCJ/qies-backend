@@ -25,4 +25,9 @@ public class TicketsSold {
     public static boolean isValid(int number) {
         return (number >= 0 && number <= 9999);
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(number);
+    }
 }
