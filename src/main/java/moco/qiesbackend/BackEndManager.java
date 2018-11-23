@@ -126,9 +126,21 @@ public class BackEndManager {
         String logMessage = "Failed to change tickets. Source service does not exist.";
         Level logLevel = Level.WARNING;
         if (centralServicesList.contains(record.getSourceNumber())) {
+            Service source = centralServicesList.get(record.getSourceNumber());
             logMessage = "Failed to change tickets. Destination service does not exist.";
             if (centralServicesList.contains(record.getDestinationNumber())) {
-
+                Service destination = centralServicesList.get(record.getDestinationNumber());
+                int transfer = record.getNumberTickets().getNumber();
+                logMessage = "Failed to change tickets. Tickets to change exceeds number of tickets sold on source service.";
+                if (transfer > source.getTicketsSold().getNumber()) {
+                    logMessage = "Failed to change tickets. Tickets to change will exceed destination service capacity.";
+                    if ((destination.getTicketsSold().getNumber() + transfer) > destination.getServiceCapacity()) {
+                        source.removeTickets(transfer);
+                        destination.addTickets(transfer);
+                        logMessage = "Successfully changed tickets.";
+                        logLevel = Level.INFO;
+                    }
+                }
             }
         }
         log.log(logLevel, logMessage);
