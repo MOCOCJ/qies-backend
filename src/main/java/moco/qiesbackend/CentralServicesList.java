@@ -1,6 +1,5 @@
 package moco.qiesbackend;
 
-import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.WRITE;
 
@@ -35,6 +34,10 @@ public class CentralServicesList {
         services.remove(number);
     }
 
+    public boolean contains(ServiceNumber number) {
+        return services.keySet().contains(number);
+    }
+
     private ArrayList<String> centralServicesFileContents() {
         ArrayList<String> lines = new ArrayList<>();
 
@@ -46,7 +49,8 @@ public class CentralServicesList {
 
     public void writeCentralServicesFile(Path centralServicesOutputPath) {
         try {
-            Files.write(centralServicesOutputPath, centralServicesFileContents(), CREATE, WRITE, TRUNCATE_EXISTING);
+            Files.deleteIfExists(centralServicesOutputPath);
+            Files.write(centralServicesOutputPath, centralServicesFileContents(), CREATE, WRITE);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +68,8 @@ public class CentralServicesList {
 
     public void writeValidServicesFile(Path validServicesOutputPath) {
         try {
-            Files.write(validServicesOutputPath, validServicesFileContents(), CREATE, WRITE, TRUNCATE_EXISTING);
+            Files.deleteIfExists(validServicesOutputPath);
+            Files.write(validServicesOutputPath, validServicesFileContents(), CREATE, WRITE);
         } catch (IOException e) {
             e.printStackTrace();
         }
