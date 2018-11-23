@@ -73,12 +73,22 @@ public class BackEndManager {
 
     // Delete service
     private void processDEL(TransactionRecord record) {
+        String logMessage = "Failed to delete service. Service does not exist.";
+        Level logLevel = Level.WARNING;
+        if (centralServicesList.contains(record.getSourceNumber())) {
 
+        }
+        log.log(logLevel, logMessage);
     }
 
     // Sell tickets
     private void processSEL(TransactionRecord record) {
+        String logMessage = "Failed to sell tickets. Service does not exist";
+        Level logLevel = Level.WARNING;
+        if (centralServicesList.contains(record.getSourceNumber())) {
 
+        }
+        log.log(logLevel, logMessage);
     }
 
     // Cancel tickets
@@ -99,6 +109,14 @@ public class BackEndManager {
 
     // Change tickets
     private void processCHG(TransactionRecord record) {
+        String logMessage = "Failed to change tickets. Source service does not exist.";
+        Level logLevel = Level.WARNING;
+        if (centralServicesList.contains(record.getSourceNumber())) {
+            logMessage = "Failed to change tickets. Destination service does not exist.";
+            if (centralServicesList.contains(record.getDestinationNumber())) {
 
+            }
+        }
+        log.log(logLevel, logMessage);
     }
 }
