@@ -2,12 +2,15 @@ package moco.qiesbackend;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
 
+import lombok.extern.java.Log;
 import moco.qiesbackend.parser.CentralServicesParser;
 import moco.qiesbackend.parser.TransactionQueue;
 import moco.qiesbackend.parser.TransactionSummaryParser;
 import moco.qiesbackend.record.TransactionRecord;
 
+@Log
 public class BackEndManager {
     TransactionQueue transactionSummary;
     CentralServicesList centralServicesList;
@@ -55,12 +58,17 @@ public class BackEndManager {
 
     // Create service
     private void processCRE(TransactionRecord record) {
+        String logMessage = "Failed to create new service. A service with that number already exists.";
+        Level logLevel = Level.WARNING;
         if (!centralServicesList.contains(record.getSourceNumber())) {
             Service newService = new Service();
             newService.setServiceNumber(record.getSourceNumber());
             newService.setServiceName(record.getServiceName());
             centralServicesList.add(newService);
+            logMessage = "New service created";
+            logLevel = Level.INFO;
         }
+        log.log(logLevel, logMessage);
     }
 
     // Delete service

@@ -1,5 +1,6 @@
 package moco.qiesbackend.record;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 public class ServiceNumber extends RecordElement {
     // Vars
@@ -68,13 +70,5 @@ public class ServiceNumber extends RecordElement {
             return number;
         }
         return DEFAULT;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o instanceof ServiceNumber) {
-            return this.number.equals(((ServiceNumber)o).getNumber());
-        }
-        return false;
     }
 }
