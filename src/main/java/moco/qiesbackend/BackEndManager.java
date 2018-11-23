@@ -92,7 +92,14 @@ public class BackEndManager {
         String logMessage = "Failed to sell tickets. Service does not exist";
         Level logLevel = Level.WARNING;
         if (centralServicesList.contains(record.getSourceNumber())) {
-
+            Service service = centralServicesList.get(record.getSourceNumber());
+            try {
+                service.addTickets(record.getNumberTickets().getNumber());
+                logMessage = "Successfully sold tickets.";
+                logLevel = Level.INFO;
+            } catch (IllegalArgumentException e) {
+                logMessage = "Failed to sell tickets. Number to sell will exceed service capacity";
+            }
         }
         log.log(logLevel, logMessage);
     }
