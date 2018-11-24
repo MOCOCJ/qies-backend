@@ -16,12 +16,14 @@ public class NumberTickets extends RecordElement {
     private final static int DEFAULT = 0;
     private final static String NUMBERS = "0123456789";
 
-    public NumberTickets(String numbers) {
-        if (isValid(numbers)) {
-            number = Integer.parseInt(numbers);
-            isSet = true;
-        } else {
-            throw new IllegalArgumentException();
+    public NumberTickets(String numbers, boolean defaultStr) {
+        if (!defaultStr) {
+            if (isValid(numbers)) {
+                number = Integer.parseInt(numbers);
+                isSet = true;
+            } else {
+                throw new IllegalArgumentException();
+            }
         }
     }
 

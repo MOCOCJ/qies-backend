@@ -39,260 +39,119 @@ public class TransactionSummaryParser {
 
     public static TransactionRecord parseLine(String transactionString) {
         String tempCode = transactionString.substring(0, 3);
-        int parceLocation = 4, prevLocation = parceLocation, dateLength = 0;
         TransactionCode CODE;
         TransactionRecord newRecord;
-        String temp = "";
-        NumberTickets tempTickets;
-        ServiceDate tempDate;
-        ServiceName tempName;
-        ServiceNumber tempNumber;
 
         switch (tempCode) {
         case "CRE":
             CODE = TransactionCode.CRE;
             newRecord = new TransactionRecord(CODE);
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation++;
-            }
-            temp = transactionString.substring(prevLocation, parceLocation);
-            tempTickets = new NumberTickets(temp);
-            newRecord.setNumberTickets(tempTickets);
-            parceLocation++;
-            prevLocation = parceLocation;
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            parceLocation = transactionString.length() - 1;
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation--;
-                dateLength++;
-            }
-            temp = transactionString.substring(prevLocation, transactionString.length() - dateLength);
-            tempName = new ServiceName(temp);
-            newRecord.setServiceName(tempName);
-            prevLocation = transactionString.length() - dateLength - 1;
-
-            temp = transactionString.substring(prevLocation);
-            tempDate = new ServiceDate(temp);
-            newRecord.setServiceDate(tempDate);
-
+            finalParse(transactionString, newRecord);
             return newRecord;
         case "DEL":
             CODE = TransactionCode.DEL;
             newRecord = new TransactionRecord(CODE);
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation++;
-            }
-            temp = transactionString.substring(prevLocation, parceLocation);
-            tempTickets = new NumberTickets(temp);
-            newRecord.setNumberTickets(tempTickets);
-            parceLocation++;
-            prevLocation = parceLocation;
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            parceLocation = transactionString.length() - 1;
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation--;
-                dateLength++;
-            }
-            temp = transactionString.substring(prevLocation, transactionString.length() - dateLength);
-            tempName = new ServiceName(temp);
-            newRecord.setServiceName(tempName);
-            prevLocation = transactionString.length() - dateLength - 1;
-
-            temp = transactionString.substring(prevLocation);
-            tempDate = new ServiceDate(temp);
-            newRecord.setServiceDate(tempDate);
-
+            finalParse(transactionString, newRecord);
             return newRecord;
         case "SEL":
             CODE = TransactionCode.SEL;
             newRecord = new TransactionRecord(CODE);
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation++;
-            }
-            temp = transactionString.substring(prevLocation, parceLocation);
-            tempTickets = new NumberTickets(temp);
-            newRecord.setNumberTickets(tempTickets);
-            parceLocation++;
-            prevLocation = parceLocation;
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            parceLocation = transactionString.length() - 1;
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation--;
-                dateLength++;
-            }
-            temp = transactionString.substring(prevLocation, transactionString.length() - dateLength);
-            tempName = new ServiceName(temp);
-            newRecord.setServiceName(tempName);
-            prevLocation = transactionString.length() - dateLength - 1;
-
-            temp = transactionString.substring(prevLocation);
-            tempDate = new ServiceDate(temp);
-            newRecord.setServiceDate(tempDate);
-
+            finalParse(transactionString, newRecord);
             return newRecord;
         case "CAN":
             CODE = TransactionCode.CAN;
             newRecord = new TransactionRecord(CODE);
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation++;
-            }
-            temp = transactionString.substring(prevLocation, parceLocation);
-            tempTickets = new NumberTickets(temp);
-            newRecord.setNumberTickets(tempTickets);
-            parceLocation++;
-            prevLocation = parceLocation;
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            parceLocation = transactionString.length() - 1;
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation--;
-                dateLength++;
-            }
-            temp = transactionString.substring(prevLocation, transactionString.length() - dateLength);
-            tempName = new ServiceName(temp);
-            newRecord.setServiceName(tempName);
-            prevLocation = transactionString.length() - dateLength - 1;
-
-            temp = transactionString.substring(prevLocation);
-            tempDate = new ServiceDate(temp);
-            newRecord.setServiceDate(tempDate);
-
+            finalParse(transactionString, newRecord);
             return newRecord;
         case "CHG":
             CODE = TransactionCode.CHG;
             newRecord = new TransactionRecord(CODE);
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation++;
-            }
-            temp = transactionString.substring(prevLocation, parceLocation);
-            tempTickets = new NumberTickets(temp);
-            newRecord.setNumberTickets(tempTickets);
-            parceLocation++;
-            prevLocation = parceLocation;
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            parceLocation = transactionString.length() - 1;
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation--;
-                dateLength++;
-            }
-            temp = transactionString.substring(prevLocation, transactionString.length() - dateLength);
-            tempName = new ServiceName(temp);
-            newRecord.setServiceName(tempName);
-            prevLocation = transactionString.length() - dateLength - 1;
-
-            temp = transactionString.substring(prevLocation);
-            tempDate = new ServiceDate(temp);
-            newRecord.setServiceDate(tempDate);
-
+            finalParse(transactionString, newRecord);
             return newRecord;
         case "EOS":
             CODE = TransactionCode.EOS;
             newRecord = new TransactionRecord(CODE);
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation++;
-            }
-            temp = transactionString.substring(prevLocation, parceLocation);
-            tempTickets = new NumberTickets(temp);
-            newRecord.setNumberTickets(tempTickets);
-            parceLocation++;
-            prevLocation = parceLocation;
-
-            temp = transactionString.substring(parceLocation, parceLocation + 5);
-            tempNumber = new ServiceNumber(temp);
-            newRecord.setSourceNumber(tempNumber);
-            parceLocation += 6;
-            prevLocation = parceLocation;
-
-            parceLocation = transactionString.length() - 1;
-            while (transactionString.charAt(parceLocation) != ' ') {
-                parceLocation--;
-                dateLength++;
-            }
-            temp = transactionString.substring(prevLocation, transactionString.length() - dateLength);
-            tempName = new ServiceName(temp);
-            newRecord.setServiceName(tempName);
-            prevLocation = transactionString.length() - dateLength - 1;
-
-            temp = transactionString.substring(prevLocation);
-            tempDate = new ServiceDate(temp);
-            newRecord.setServiceDate(tempDate);
-
+            finalParse(transactionString, newRecord);
             return newRecord;
         default:
             break;
         }
 
         return null;
+    }
+
+    /**
+     * Will parse the transaction string pulling apart the string into its various
+     * components
+     * 
+     * @param transactionString
+     * @param newRecord
+     */
+    private static void finalParse(String transactionString, TransactionRecord newRecord) {
+        int parceLocation = 4, prevLocation = parceLocation, dateLength = 0;
+        String temp = "";
+        NumberTickets tempTickets;
+        ServiceDate tempDate;
+        ServiceName tempName;
+        ServiceNumber tempNumber;
+
+        // Source Number parse
+        temp = transactionString.substring(parceLocation, parceLocation + 5);
+        if (newRecord.getCode().toString().equals("EOS")) {
+            tempNumber = new ServiceNumber(temp, true);
+            newRecord.setSourceNumber(tempNumber);
+        } else {
+            tempNumber = new ServiceNumber(temp, false);
+            newRecord.setSourceNumber(tempNumber);
+        }
+        parceLocation += 6;
+        prevLocation = parceLocation;
+
+        // Number Ticket parse
+        while (transactionString.charAt(parceLocation) != ' ') {
+            parceLocation++;
+        }
+        temp = transactionString.substring(prevLocation, parceLocation);
+        if (temp.equals("0")) {
+            tempTickets = new NumberTickets(temp, true);
+        } else {
+            tempTickets = new NumberTickets(temp, false);
+        }
+        newRecord.setNumberTickets(tempTickets);
+        parceLocation++;
+        prevLocation = parceLocation;
+
+        // Destination Number parse
+        temp = transactionString.substring(parceLocation, parceLocation + 5);
+        if (temp.equals("00000")) {
+            tempNumber = new ServiceNumber(temp, true);
+            newRecord.setDestinationNumber(tempNumber);
+        } else {
+            tempNumber = new ServiceNumber(temp, false);
+            newRecord.setDestinationNumber(tempNumber);
+        }
+        parceLocation += 6;
+        prevLocation = parceLocation;
+        parceLocation = transactionString.length() - 1;
+
+        // Service Name parse
+        while (transactionString.charAt(parceLocation) != ' ') {
+            parceLocation--;
+            dateLength++;
+        }
+        temp = transactionString.substring(prevLocation, transactionString.length() - dateLength - 1);
+        tempName = new ServiceName(temp);
+        newRecord.setServiceName(tempName);
+        prevLocation = transactionString.length() - dateLength;
+
+        // Service Date parse
+        temp = transactionString.substring(prevLocation);
+        if (temp.length() == 1 && temp.charAt(0) == '0') {
+            tempDate = new ServiceDate(temp, true);
+            newRecord.setServiceDate(tempDate);
+        } else {
+            tempDate = new ServiceDate(temp, false);
+            newRecord.setServiceDate(tempDate);
+        }
     }
 }
