@@ -132,9 +132,9 @@ public class BackEndManager {
                 Service destination = centralServicesList.get(record.getDestinationNumber());
                 int transfer = record.getNumberTickets().getNumber();
                 logMessage = "Failed to change tickets. Tickets to change exceeds number of tickets sold on source service.";
-                if (transfer > source.getTicketsSold().getNumber()) {
+                if (transfer <= source.getTicketsSold().getNumber()) {
                     logMessage = "Failed to change tickets. Tickets to change will exceed destination service capacity.";
-                    if ((destination.getTicketsSold().getNumber() + transfer) > destination.getServiceCapacity()) {
+                    if ((destination.getTicketsSold().getNumber() + transfer) < destination.getServiceCapacity()) {
                         source.removeTickets(transfer);
                         destination.addTickets(transfer);
                         logMessage = "Successfully changed tickets.";
